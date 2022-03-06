@@ -44,6 +44,12 @@ public class Cocktaildle
         paloma.add("grapefruit juice");
         paloma.add("simple syrup");
         paloma.add("lime juice");
+        ArrayList<String> sunsetBrickCorona = new ArrayList<>();
+        sunsetBrickCorona.add("corona");
+        sunsetBrickCorona.add("tequila");
+        sunsetBrickCorona.add("orange juice");
+        sunsetBrickCorona.add("pomegranate juice");
+        sunsetBrickCorona.add("lime juice");
 
         ArrayList<Cocktail> cocktails = new ArrayList<>();
         cocktails.add(new Cocktail("mojito", mojito));
@@ -54,6 +60,7 @@ public class Cocktaildle
         cocktails.add(new Cocktail("daiquiri", daiquiri));
         cocktails.add(new Cocktail("mimosa", mimosa));
         cocktails.add(new Cocktail("paloma", paloma));
+        cocktails.add(new Cocktail("sunset brick corona", sunsetBrickCorona)); //our special drink
         return cocktails;
     }
 
