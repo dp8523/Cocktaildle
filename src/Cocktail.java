@@ -48,7 +48,7 @@ public class Cocktail {
 
         if ( match == 0 ) {
             //no matching ingredients
-            color = "grey";
+            color = "gray";
         } else if ( match > 0 && match < userGuess.ingredients.size() ) {
             //at least 1 or more similar ingredients
             color = "yellow";
