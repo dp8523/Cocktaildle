@@ -1,4 +1,6 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cocktaildle
 {
@@ -24,7 +26,7 @@ public class Cocktaildle
         oldFashioned.add("bourbon");
         oldFashioned.add("angostura bitters");
         oldFashioned.add("sugar");
-        oldFashioned.add("orange peel");
+        oldFashioned.add("orange wedge");
         ArrayList<String> french75 = new ArrayList<>();
         french75.add("gin");
         french75.add("champagne");
@@ -36,7 +38,7 @@ public class Cocktaildle
         daiquiri.add("simple syrup");
         ArrayList<String> mimosa = new ArrayList<>();
         mimosa.add("champagne");
-        mimosa.add("orange wheel");
+        mimosa.add("orange wedge");
         mimosa.add("orange juice");
         ArrayList<String> paloma = new ArrayList<>();
         paloma.add("tequila");
@@ -64,9 +66,54 @@ public class Cocktaildle
         return cocktails;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         ArrayList<Cocktail> cocktails = makeCocktails();
         Cocktail secretCocktail = Cocktail.randomCocktail(cocktails);
+        System.out.println("secret: " + secretCocktail.getName());
+        Scanner in = new Scanner(System.in);
+        System.out.println("Guess the secret cocktail!");
+        int attempt = 1;
+        while (attempt <= 4)
+        {
+            System.out.println("Next guess: ");
+            Cocktail userCocktail = null;
+            String guess = in.nextLine();
+            boolean inList = false;
+            while (!inList)
+            {
+                for (Cocktail cocktail : cocktails)
+                {
+                    if (guess.equals(cocktail.getName()))
+                    {
+                        inList = true;
+                        break;
+                    }
+                }
+                if (inList)
+                {
+                    break;
+                }
+                System.out.println("Not in list, try again");
+                guess = in.nextLine();
+            }
+            for (Cocktail cocktail : cocktails)
+            {
+                if (guess.equals(cocktail.getName()))
+                {
+                    userCocktail = new Cocktail(guess, cocktail.getIngredients());
+                    break;
+                }
+            }
+            System.out.println("guess: " + userCocktail.getName());
+            String correctness = Cocktail.checkIngredients(secretCocktail, userCocktail);
+            System.out.println(correctness + ", attempt "+attempt);
+            if(correctness.equals("green"))
+            {
+                System.out.println("You Win!");
+                break;
+            }
+            attempt++;
+        }
+        System.out.println("No more guesses! Answer: "+secretCocktail.getName());
     }
 }

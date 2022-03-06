@@ -33,7 +33,7 @@ public class Cocktail {
      * @param userGuess the cocktail the user guessed
      * @return a String that tells us the color of the guess
      */
-    public String checkIngredients ( Cocktail answer, Cocktail userGuess) {
+    public static String checkIngredients ( Cocktail answer, Cocktail userGuess) {
         int match = 0;
         String color;
         //get the right answer cocktail list
