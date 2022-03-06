@@ -20,7 +20,7 @@ public class Cocktail {
      * @param Cocktails the list of all the cocktails
      * @return a Cocktail that the user will try to guess
      */
-    public Cocktail randomCocktail( ArrayList<Cocktail> Cocktails) {
+    public static Cocktail randomCocktail( ArrayList<Cocktail> Cocktails) {
         int randomNum = (int)(Math.random() * Cocktails.size());
         return Cocktails.get(randomNum);
     }
